@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserAuthenticationController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\ReservationsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,5 @@ Route::prefix('v1')->group(function () {
 ######################### Private Route #########################
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::post('logout', [UserAuthenticationController::class, 'logout']);
+    Route::apiResource('reservations', ReservationsController::class);
 });
